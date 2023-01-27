@@ -1,0 +1,25 @@
+Öğrenci Kayıt Otomasyonu
+
+A. Dependencies:
+    -> Fake api olarak json-server kullanılacak
+    -> API ile iletişim için axios kullanılacak
+    -> Sayfalama yapısı için react-router-dom kullanılacak
+    -> UI kütüphanesi olarak cdn ile bootstrap eklenecek (+)
+
+B. İşleyiş
+    1. Bootstrap dahil edildi +
+    2. json-server için veri yapısı ve port ayarlaması yapıldı +
+    3. React router dom için alt yapının hazırlanması +
+    4. Genel bir Header component'ı hazırlanması +
+
+
+C. Uygulamanın Kuralları:
+    1. Anasayfada bütün öğrenciler listelenecek. +
+    2. Anasayfada bulunan bir buton vasıtasıyla öğrenci ekleme sayfasına
+    gidilecek; öğrenci ekleme başarılı olduktan sonra anasayfaya dönülecek +
+    3. Listelenen öğrenci tablosunda işlemler isimli bir sütun olacak
+    Bu sütunda sil ve güncelle isimli iki buton olacak. +
+    4. Sil butonunda öğrenci silme işlemi gerçekleştirilecek
+    5. Güncelle butonuna tıklandığında yeni bir sayfa açılacak (/edit-student/id)
+    ve bu sayfada güncelleme işlemi başarıyla gerçekleştikten sonra tekrar
+    anasayfaya dönülecek

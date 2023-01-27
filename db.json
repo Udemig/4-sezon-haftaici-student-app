@@ -1,0 +1,28 @@
+{
+  "students": [
+    {
+      "id": "1",
+      "firstName": "ahmet",
+      "lastName": "yılmaz",
+      "studentNumber": "512",
+      "studentClass": "4/A",
+      "schoolName": "Cumhuriyet İ.Ö.O."
+    },
+    {
+      "id": "2",
+      "firstName": "mehmet",
+      "lastName": "yılmaz",
+      "studentNumber": "1037",
+      "studentClass": "7/A",
+      "schoolName": "Cumhuriyet İ.Ö.O."
+    },
+    {
+      "id": "1674766188386",
+      "firstName": "ghdsf",
+      "lastName": "dsfsd",
+      "studentClass": "sdfsd",
+      "studentNumber": "100",
+      "schoolName": "sdfs"
+    }
+  ]
+}
