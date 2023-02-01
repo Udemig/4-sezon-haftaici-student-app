@@ -1,19 +1,35 @@
-import React, { useState,useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
 import Header from "../components/Header";
 
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import { useNavigate } from "react-router-dom";
-
-const AddStudent = () => {
+const EditStudent = () => {
   const navigate = useNavigate();
+  const params = useParams();
+  const [willEditStudent, setWillEditStudent] = useState(null);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [studentNumber, setStudentNumber] = useState("");
   const [studentClass, setStudentClass] = useState("");
   const [schoolName, setSchoolName] = useState("");
-  const [students,setStudents]=useState(null)
-  const saveStudent = (event) => {
+  console.log(params);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3004/students/${params.studentId}`)
+      .then((res) => {
+        console.log(res.data);
+        setWillEditStudent(res.data);
+        setFirstName(res.data.firstName);
+        setLastName(res.data.lastName);
+        setStudentNumber(res.data.studentNumber);
+        setStudentClass(res.data.studentClass);
+        setSchoolName(res.data.schoolName);
+      })
+      .catch((err) => {});
+  }, []);
+  const handleSubmit = (event) => {
     event.preventDefault();
     /* validation */
     if (
@@ -23,46 +39,34 @@ const AddStudent = () => {
       studentClass === "" ||
       schoolName === ""
     ) {
-      alert("Bütün alanlar zorunludur.");
+      alert("Bütün alanlar zorunludur");
       return;
     }
-    const hasStudent=students.find(item=>item.studentNumber === studentNumber)
-    if(hasStudent !== undefined){
-        alert(`${studentNumber} numarası zaten bir öğrenciye atanmıştır`)
-        return
-    }
-    const newStudent = {
-      id: String(new Date().getTime()),
+    const editedStudent = {
+      id: params.studentId,
       firstName: firstName,
       lastName: lastName,
-      studentClass: studentClass,
       studentNumber: studentNumber,
+      studentClass: studentClass,
       schoolName: schoolName,
     };
     axios
-      .post("http://localhost:3004/students", newStudent)
+      .put(`http://localhost:3004/students/${params.studentId}`, editedStudent)
       .then((res) => {
         navigate("/");
       })
-      .catch((err) => {});
+      .catch((err) => {
+        alert("Güncelleme işlemi esnasında bir hata oluştu");
+      });
   };
-  useEffect(()=>{
-    axios.get("http://localhost:3004/students")
-    .then(res=>{
-        setStudents(res.data)
-    })
-    .catch(err=>{
-
-    })
-  },[])
-  if(students === null){
-    return null
+  if (willEditStudent === null) {
+    return null;
   }
   return (
     <div>
-      <Header page={"add-student"} />
+      <Header page={"edit-student"} />
       <div className="container my-5">
-        <form onSubmit={saveStudent}>
+        <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="firstName" className="form-label">
               Öğrenci Adı
@@ -130,7 +134,7 @@ const AddStudent = () => {
           </div>
           <div className="d-flex justify-content-center my-5">
             <button className="btn btn-primary w-50" type="submit">
-              Kaydet
+              Güncelle
             </button>
           </div>
         </form>
@@ -139,4 +143,4 @@ const AddStudent = () => {
   );
 };
 
-export default AddStudent;
+export default EditStudent;

@@ -61,7 +61,7 @@ const ListStudents = ({ students, didUpdate,setDidUpdate }) => {
                       <button onClick={()=>deleteStudent(student.id)} type="button" className="btn btn-sm btn-outline-danger">
                         Sil
                       </button>
-                      <Link type="button" className="btn btn-sm btn-outline-primary">
+                      <Link to={`/edit-student/${student.id}`} className="btn btn-sm btn-outline-primary">
                         Güncelle
                       </Link>
                     </div>

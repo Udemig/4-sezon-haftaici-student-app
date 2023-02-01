@@ -2,9 +2,16 @@ import React from "react";
 
 import {Link} from "react-router-dom"
 
-const Header = () => {
+const Header = ({page="home"}) => {
+  var bgClass="bg-primary"
+  if(page=="add-student"){
+    bgClass="bg-success"
+  }
+  if(page==="edit-student"){
+    bgClass="bg-danger"
+  }
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-primary">
+    <nav className={`navbar navbar-expand-sm navbar-dark ${bgClass}`}>
       <div className="container-fluid">
         <div className="navbar-brand">
           Student App

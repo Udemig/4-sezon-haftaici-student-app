@@ -8,7 +8,6 @@ import axios from "axios";
 const Home = () => {
   const [students, setStudents] = useState(null);
   const [didUpdate, setDidUpdate] = useState(false);
-  
 
   useEffect(() => {
     axios
@@ -23,7 +22,7 @@ const Home = () => {
 
   return (
     <div>
-      <Header />
+      <Header page={"home"} />
       <ListStudents
         students={students}
         didUpdate={didUpdate}

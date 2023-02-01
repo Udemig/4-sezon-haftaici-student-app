@@ -23,3 +23,19 @@ C. Uygulamanın Kuralları:
     5. Güncelle butonuna tıklandığında yeni bir sayfa açılacak (/edit-student/id)
     ve bu sayfada güncelleme işlemi başarıyla gerçekleştikten sonra tekrar
     anasayfaya dönülecek
+
+    6. Güncelleme İşlemi:
+        6.1. Güncelleme işlemi farklı bir sayfada yapılacak. Bunun için bir link 
+        olmalı ve bu linke tıklandığında güncelleme yapılacak sayfaya gitmeli
+        6.2. Hangi öğrenci güncellenecekse o öğrencinin id bilgisini edit sayfasına
+        taşımalıyım
+        6.3. Edit sayfasında url ile taşınan id bilgisini okumalıyım
+        6.4. Okuduğum öğrenci id'sini kullanarak ilgili öğrenciye ait bilgileri
+        çekmeliyim
+        6.5. Çektiğim verileri kullanarak öğrenci bilgilerini güncelletecek
+        form hazırlamalıyım
+        6.6. Hazırladığım formu çektiğim verilerle doldurmalıyım
+        6.7. Kullanıcı verileri güncelledikten sonra form kontrol edilerek
+        güncel halini kaydettirme işlemi yapılacak
+        6.8. Güncelleme işlemi başarılıysa tekrar anasayfaya dönsün, hatalıysa bir 
+        alert verilsin
